@@ -96,3 +96,23 @@ html {
     padding: 8px 12px;
     text-decoration: none;
 }
+
+.table{
+  border-radius: 25px;
+  background: green;
+  margin-top: 50px;
+  margin-left: 150px;
+  width: 50em;
+  height: 20em;
+}
+
+.gamecontent{
+  margin-top: 50px;
+  margin-left: 20em;
+}
+
+.wallet{
+  margin-left: 51em;
+  direction: rtl;
+  text-align: left;
+}
