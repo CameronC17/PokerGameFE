@@ -1,0 +1,17 @@
+nav{
+  width: 100%;
+  position: block;
+  height: 50px;
+  border: solid 1px black;
+  text-align: center;
+  display: inline-block;
+  float: left;
+}
+
+.container{
+  float: left;
+  width:100%;
+  display: inline-block;
+  text-align: center;
+
+}
