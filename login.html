@@ -8,6 +8,7 @@
     <script src="./js/app.js"></script>
     <link rel="stylesheet" type="text/css" href="./css/reset.css">
     <link rel="stylesheet" type="text/css" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 </head>
 
 <body>
@@ -24,12 +25,10 @@
             <a class="button" id="gamepage" href="game.html">Game</a>
         </div>
     </nav>
-    <div class="login-content">
+    <div class="form-content">
         <h1>Login to your Pokerbalmz account</h1>
         <div class="form-container">
-
-
-            <form class="loginform" action="/users" method="POST">
+            <form class="loginform" action="api/users/register" method="POST">
                 <div>
                     <label>Username</label>
                     <input type="text" name="username" class="username" required>
