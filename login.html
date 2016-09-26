@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Pokerbalmz Login</title>
     <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
     <script src="./js/app.js"></script>
     <link rel="stylesheet" type="text/css" href="./css/reset.css">
@@ -12,24 +12,37 @@
 
 <body>
 
-  <nav  class="navbar">
-    <h1>Poker</h1>
-    <a class="button" id="homepage" href="index.html">Home</a>
-    <a class="button" id="registerpage" href="register.html">Register</a>
-    <a class="button" id="loginpage" href="login.html">Login</a>
-    <a class="button" id="gamepage" href="game.html">Game</a>
-  </nav>
-    <form class="loginform" action="/users" method="POST">
-        <div class="username">
-            <label>Username</label>
-            <input type="text" name="username" required>
+    <nav class="navbar">
+        <div id="logo">
+            <h1>Pokerbalmz</h1>
         </div>
-        <div class="password">
-            <label>Password</label>
-            <input type="password" name="password" required>
+
+        <div id="links">
+            <a class="button" id="homepage" href="index.html">Home</a>
+            <a class="button" id="registerpage" href="register.html">Register</a>
+            <a class="button" id="loginpage" href="login.html">Login</a>
+            <a class="button" id="gamepage" href="game.html">Game</a>
         </div>
-        <input type="submit" value="Login">
-    </form>
+    </nav>
+    <div class="login-content">
+        <h1>Login to your Pokerbalmz account</h1>
+        <div class="form-container">
+
+
+            <form class="loginform" action="/users" method="POST">
+                <div>
+                    <label>Username</label>
+                    <input type="text" name="username" class="username" required>
+                </div>
+                <div>
+                    <label>Password</label>
+                    <input type="password" name="password" class="password" required>
+                </div>
+                <input type="submit" value="Login" id="login-button">
+            </form>
+        </div>
+    </div>
+
 
 </body>
 
