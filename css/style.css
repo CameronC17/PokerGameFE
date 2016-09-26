@@ -1,2 +1,7 @@
-body{
+.navbar{
+  width:100%;
+  height: 130px;
+  display block;
+  border: 1px solid black;
+  text-align: center;
 }
