@@ -16,7 +16,9 @@
         <div id="logo">
             <h1>Pokerbalmz</h1>
         </div>
+        <div id="custom-msg">
 
+        </div>
         <div id="links">
             <a class="button" id="homepage">Home</a>
             <a class="button" id="registerpage">Register</a>
@@ -41,17 +43,20 @@
         <div class="form-content">
             <h1>Login to your Pokerbalmz account</h1>
             <div class="form-container">
-                <form class="loginform" action="api/users/login" method="POST">
+                <form class="loginform">
                     <div>
                         <label>Username</label>
-                        <input type="text" name="username" class="username" required>
+                        <input type="text" class="username" id="username" required>
                     </div>
                     <div>
                         <label>Password</label>
-                        <input type="password" name="password" class="password" required>
+                        <input type="password" id= "password" class="password" required>
                     </div>
-                    <input type="submit" value="Login" id="login-button">
+                    <input type="button" value="Login" id="login-button">
                 </form>
+                <div class="error-msg">
+
+                </div>
             </div>
         </div>
 
@@ -61,7 +66,7 @@
         <div class="form-content">
             <h1>Register a Pokerbalmz account</h1>
             <div class="form-container">
-                <form class="loginform" action="api/users/register" method="POST">
+                <form class="loginform" action="http://localhost:3000/api/users/register" method="POST">
                     <div>
                         <label>Username</label>
                         <input type="text" name="username" class="username" required>
@@ -78,39 +83,93 @@
     </section>
     <section id='game-section'>
 
-        <h2 class="title">Poker Game App</h2>
         <div class="game">
             <div class="wallet">
                 <input type="text" name="wallet" placeholder="Wallet" readonly><br>
             </div>
             <div class="table">
-              <br>
+                <table>
+                    <tr class="top">
+                        <td id="left">
+                            <div class="card" id="red">
+                                <p class="suit">&#9830;</p>
+                                <p class="cardtype">10</p>
+                                <p class="upsidedown suit">&#9830;</p>
+                            </div>
+                            <div class="card" id="black">
+                                <p class="suit">&#9827;</p>
+                                <p class="cardtype">A</p>
+                                <p class="upsidedown suit">&#9827;</p>
+                            </div>
+                        </td>
+                        <td id="middle">
+                            <div class="card" id="black">
+                                <p class="suit">&#9824;</p>
+                                <p class="cardtype">1</p>
+                                <p class="upsidedown suit">&#9824;</p>
+                            </div>
+                            <div class="card" id="black">
+                                <p class="suit">&#9824;</p>
+                                <p class="cardtype">1</p>
+                                <p class="upsidedown suit">&#9824;</p>
+                            </div>
+                        </td>
+                        <td id="right">
+                            <div class="card" id="red">
+                                <p class="suit">&#9830;</p>
+                                <p class="cardtype">10</p>
+                                <p class="upsidedown suit">&#9830;</p>
+                            </div>
+                            <div class="card" id="black">
+                                <p class="suit">&#9827;</p>
+                                <p class="cardtype">A</p>
+                                <p class="upsidedown suit">&#9827;</p>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="bottom">
+                        <td id="left">
+                            <div class="card" id="red">
+                                <p class="suit">&#9830;</p>
+                                <p class="cardtype">10</p>
+                                <p class="upsidedown suit">&#9830;</p>
+                            </div>
+                            <div class="card" id="black">
+                                <p class="suit">&#9827;</p>
+                                <p class="cardtype">A</p>
+                                <p class="upsidedown suit">&#9827;</p>
+                            </div>
+                        </td>
+                        <td id="middle">
+                            <div class="card" id="red">
+                                <p class="suit">&#9830;</p>
+                                <p class="cardtype">10</p>
+                                <p class="upsidedown suit">&#9830;</p>
+                            </div>
+                            <div class="card" id="black">
+                                <p class="suit">&#9827;</p>
+                                <p class="cardtype">A</p>
+                                <p class="upsidedown suit">&#9827;</p>
+                            </div>
+                        </td>
+                        <td id="right">
+                            <div class="card" id="red">
+                                <p class="suit">&#9830;</p>
+                                <p class="cardtype">10</p>
+                                <p class="upsidedown suit">&#9830;</p>
+                            </div>
+                            <div class="card" id="black">
+                                <p class="suit">&#9827;</p>
+                                <p class="cardtype">A</p>
+                                <p class="upsidedown suit">&#9827;</p>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
 
-                <div class="card" id="black">
-                    <p class="suit">&#9827;</p>
-                    <p class="cardtype">A</p>
-                    <p class="upsidedown suit">&#9827;</p>
-                </div><br>
-                <div class="card" id="red">
-                    <p class="suit">&#9830;</p>
-                    <p class="cardtype">10</p>
-                    <p class="upsidedown suit">&#9830;</p>
-                </div>
             </div>
             <div class="seat" id="seat1">
-              <div class="player1card">
-              <div class="card" id="black">
-                  <p class="suit">&#9824;</p>
-                  <p class="cardtype">1</p>
-                  <p class="upsidedown suit">&#9824;</p>
-              </div><br>
-              <div class="card" id="red">
-                  <p class="suit">&#9829;</p>
-                  <p class="cardtype">Q</p>
-                  <p class="upsidedown suit">&#9829;</p>
-              </div><br>
             </div>
-          </div>
             <div class="seat" id="seat2">
             </div>
             <div class="seat" id="seat3">
