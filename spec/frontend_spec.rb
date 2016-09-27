@@ -14,21 +14,13 @@ describe "Poker game front end" do
 
   it 'should have a home page that shows links to register, login and the game' do 
     register = @driver.find_element(id: "homepage").attribute("outerHTML")
-    expect(register).to include "<a"
-    expect(register).to include "href"
-    expect(register).to include "Home"
+    expect(register).to include "<a", "href", "Home"
     register = @driver.find_element(id: "registerpage").attribute("outerHTML")
-    expect(register).to include "<a"
-    expect(register).to include "href"
-    expect(register).to include "Register"
+    expect(register).to include "<a", "href", "Register"
     login_link = @driver.find_element(id: "loginpage").attribute("outerHTML")
-    expect(login_link).to include "a"
-    expect(login_link).to include "href"
-    expect(login_link).to include "Login"
+    expect(login_link).to include "a", "href", "Login"
     game_link = @driver.find_element(id: "gamepage").attribute("outerHTML")
-    expect(game_link).to include "a"
-    expect(game_link).to include "href"
-    expect(game_link).to include "Game"
+    expect(game_link).to include "a", "href", "Game"
   end
 
   it "should provide users a way to register an account" do 
@@ -38,6 +30,7 @@ describe "Poker game front end" do
     @driver.find_element(class: "password").send_keys @password
     submit = @driver.find_elements(css: ".loginform input")
     submit[-1].click
+    # This is commented out as it is currently failing and will do until redirect pages work correctly and have titles
     # expect(@driver.title).to include "Login"
   end
 
@@ -48,6 +41,7 @@ describe "Poker game front end" do
     @driver.find_element(class: "password").send_keys @password
     submit = @driver.find_elements(css: ".loginform input")
     submit[-1].click
+    # This is commented out as it is currently failing and will do until redirect pages work correctly and have titles
     # expect(@driver.title).to include "Game"
   end
 
