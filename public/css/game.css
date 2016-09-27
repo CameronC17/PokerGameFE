@@ -14,7 +14,7 @@
 
 }
 .gamecontent{
-  margin-top: -6%;
+  margin-top: -4%;
   margin-left: 85%;
   color: white;
 }
@@ -80,7 +80,7 @@
  /*################### PLAYER CARDS ####################*/
 
  table, th, td {
-   border: 2px solid black;
+   /*border: 2px solid black;*/
  }
  table{
    width: 100%;
@@ -96,7 +96,7 @@
   padding-top: 160px;
 }
 .top #right{
-  padding-left: 70px;
+  padding-left: 90px;
 }
 
 .bottom{
@@ -106,8 +106,21 @@
 .bottom #left{
   padding-top: 30px;
   padding-left: 70px;
-
 }
+
+
+.bottom #right{
+  padding-left: 60px;
+}
+
+.top #middle{
+padding-left: 30px;
+}
+
+.bottom #middle{
+padding-left: 150px;
+}
+
 
 /*####################### Seats #####################*/
 
