@@ -38,6 +38,7 @@ h1{
     border-bottom: 1px solid black;
     box-sizing: border-box;
     top: 0;
+    text-align: center;
 }
 
 .password {
@@ -54,7 +55,7 @@ h1{
 #links {
     padding-top: 16px;
     height: 50px;
-    width: 500px;
+    width: 360px;
     float: right;
     display: inline-block;
 }
@@ -146,4 +147,13 @@ h1{
 
 .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+#custom-msg{
+  display: inline-block;
+  float: left;
+  width: 250px;
+  text-align: center;
+  margin-left: 300px;
+  padding-top: 15px;
 }
