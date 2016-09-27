@@ -9,4 +9,5 @@ $("#option3").click(function () {
   $("#stake").val(20);
 });
 
+
 });
