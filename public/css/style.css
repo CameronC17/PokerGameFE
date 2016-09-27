@@ -1,13 +1,24 @@
-html {
+@import 'https://fonts.googleapis.com/css?family=Open+Sans';
+html, body {
     font-family: 'Open Sans', sans-serif;
 }
 
+section {
+  height: 100%;
+}
+
+h1{
+  font-size: 30px;
+}
 .home-content {
     width: 80%;
     margin-top: 25px;
     margin: 0 auto;
 }
 
+.home-content * {
+  padding-top: 10px;
+}
 .form-content {
     text-align: center;
 }
@@ -49,6 +60,7 @@ html {
 }
 
 #logo {
+    padding-top: 20px;
     width: 250px;
     float: left;
     font-size: 1em;
