@@ -8,4 +8,5 @@ $("#option2").click(function () {
 $("#option3").click(function () {
   $("#stake").val(20);
 });
+
 });
