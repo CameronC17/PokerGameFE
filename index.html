@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/game.css">
+    <link href="https://fonts.googleapis.com/css?family=Lusitana" rel="stylesheet">
     <title>Pokerbalmz Home</title>
 </head>
 
@@ -77,44 +78,45 @@
     </section>
     <section id='game-section'>
 
-        <div class="game">
-            <div class="wallet">
-                <input type="text" name="wallet" placeholder="Wallet" readonly><br>
+      <h1 class="title">Poker Game App</h1>
+          <div class= "game">
+          <div class="wallet">
+          <input type="text" name="wallet" placeholder="Wallet" readonly><br>
+          </div>
+          <div class="table"><br>
+            <div class="card" id="black">
+              <p class="suit">&#9824;</p>
+              <p class="cardtype">1</p>
+              <p class="upsidedown suit">&#9824;</p>
+            </div><br>
+            <div class="card" id="red">
+              <p class="suit">&#9829;</p>
+              <p class="cardtype">Q</p>
+              <p class="upsidedown suit">&#9829;</p>
+            </div><br>
+            <div class="card" id="black">
+              <p class="suit">&#9827;</p>
+              <p class="cardtype">A</p>
+              <p class="upsidedown suit" >&#9827;</p>
+            </div><br>
+            <div class="card" id="red">
+              <p class="suit">&#9830;</p>
+              <p class="cardtype">10</p>
+              <p class="upsidedown suit">&#9830;</p>
             </div>
-            <div class="table"><br>
-                <div class="card" id="black">
-                    <p class="suit">&#9824;</p>
-                    <p class="cardtype">1</p>
-                    <p class="upsidedown suit">&#9824;</p>
-                </div><br>
-                <div class="card" id="red">
-                    <p class="suit">&#9829;</p>
-                    <p class="cardtype">Q</p>
-                    <p class="upsidedown suit">&#9829;</p>
-                </div><br>
-                <div class="card" id="black">
-                    <p class="suit">&#9827;</p>
-                    <p class="cardtype">K</p>
-                    <p class="upsidedown suit">&#9827;</p>
-                </div><br>
-                <div class="card" id="red">
-                    <p class="suit">&#9830;</p>
-                    <p class="cardtype">10</p>
-                    <p class="upsidedown suit">&#9830;</p>
-                </div>
             </div>
-            <div class="gamecontent">
-                <label for="stake">Stake:</label><br>
-                <input id="option1" type="button" name="stake" value="100"> edds<br>
-                <input id="option2" type="button" name="stake" value="50"> edds<br>
-                <input id="option3" type="button" name="stake" value="20"> edds<br>
-                <input id="stake" type="number" name="stake" placeholder="Stake" required><br>
-                <button type="button">Check</button>
-                <button type="button">Fold</button>
-                <button type="button">Raise</button>
-                <button type="button">Call</button>
-            </div>
-        </div>
+          <div class="gamecontent">
+              <label for="stake">Stake:</label><br>
+              <input id="option1" type="button" name="stake" value="100"> edds<br>
+              <input id="option2" type="button" name="stake" value="50"> edds<br>
+              <input id="option3" type="button" name="stake" value="20"> edds<br>
+          <input  id="stake" type="number" name="stake" placeholder="Stake" required><br>
+          <button type="button">Check</button>
+          <button type="button">Fold</button>
+          <button type="button">Raise</button>
+          <button type="button">Call</button>
+       </div>
+       </div>
     </section>
 </body>
 
