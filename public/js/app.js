@@ -47,8 +47,6 @@ $(function() {
     var username = $('#username').val();
     var password = $('#password').val();
     loginRequest(username, password);
-
-
   })
 
   $('#bet').click(function() {
@@ -64,6 +62,7 @@ $(function() {
     console.log('Call button');
   })
   $('#start').click(function() {
+    console.log('start');
     startGame();
   })
 
@@ -109,33 +108,20 @@ function loginRequest(username, password){
         }
       }
     });
-
 }
 
 function startGame(){
   $.ajax({
-    url: "http://localhost:3000/api/game/new",
+    url: "http://localhost:3000/api/games/new",
     type: 'POST',
-    dataType: 'json',
-    data: { "username": username, "password" : password},
     async: false,
     statusCode: {
       200: function(response) {
-        // alert('Success');
+        alert('Success');
+        console.log(response);
 
-        $login.hide();
-        $register.hide();
-        $game.hide();
-        $homepage.show();
         // window.location.href = "http://localhost:3001";
-        $('#custom-msg').append('<h1>Welcome, ' + username +'</h1>')
-
-      },
-      400: function(response) {
-        alert('Unsuccessful');
-        $('.error-msg').html("<p>A user does not exist with the given details</p>");
-        $('#username').val("");
-        $('#password').val("");
+        // $('#custom-msg').append('<h1>Welcome, ' + username +'</h1>')
       }
     }
   });
