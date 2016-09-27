@@ -1,29 +1,36 @@
 .title{
-  font-size: 4em;
+  font-size: 2em;
 }
 .table{
   border-radius: 25px;
-  background: green;
-  margin-top: 50px;
-  margin-left: 150px;
-  width: 50em;
-  height: 20em;
+  background: radial-gradient(circle, #0BAD00, #088300, #065001);
+  margin-top: 1%;
+  margin-left: 11%;
+  width: 60%;
+  height: 425px;
   overflow: auto;
-  border: 20px solid brown;
+  border: 20px solid #502701;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6);
+
+
 }
 .gamecontent{
-  margin-top: 50px;
-  margin-left: 20em;
+  margin-top: -6%;
+  margin-left: 85%;
+  color: white;
 }
 .wallet{
-  margin-left: 51em;
-  padding-top: 2em;
+  margin-left: 64%;
+  padding-top: 2%;
   direction: rtl;
   text-align: left;
 }
 .game{
-  background: #BFBFBF;
+  background: radial-gradient(circle, #CB9103, #272422);
+
 }
+
+/*################ Cards ################*/
 .card {
   margin-left: 20em;
     background: white;
@@ -33,6 +40,7 @@
     border: 1px solid black;
     box-sizing: border-box;
     font-family: 'Lusitana', serif;
+    display: block;
 
     /*transition: 0.3s;*/
 }
@@ -58,8 +66,8 @@
   color:red;
 }
 .card p {
-  margin: 0px;;
-  padding: 0px;
+  margin: 0%;
+  padding: 0%;
 }
 .upsidedown{
    -webkit-transform: scale(-1, -1);
@@ -68,4 +76,68 @@
   text-align: center;
   font-size: 1.7em;
   font-weight: bolder;
+}
+
+ /*################### PLAYER CARDS ####################*/
+
+/*####################### Seats #####################*/
+
+#seat1{
+  margin-left: 4.5%;
+  position: absolute;
+  margin-top: -20%;
+  display: inline-block;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  background: #A40606;
+  border: 1px solid black;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6);
+}
+
+#seat2 {
+   display: inline-block;
+   border-radius: 50%;
+   width: 70px;
+   height: 70px;
+   background: #A40606;
+   border: 1px solid black;
+   margin-left: 20%;
+   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6);
+}
+
+#seat3 {
+  display: inline-block;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  background: #A40606;
+  border: 1px solid black;
+  margin-left: 15%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6);
+}
+
+#seat4{
+  display: inline-block;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  background: #A40606;
+  border: 1px solid black;
+  margin-left: 15%;
+  margin-top: 1%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6);
+}
+
+#seat5{
+  margin-left: 9.5%;
+  display: inline-block;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  background: #A40606;
+  border: 1px solid black;
+  position: absolute;
+  margin-top: -20%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.6);
 }
