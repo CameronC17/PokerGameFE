@@ -189,6 +189,44 @@ function startGame() {
           '<p class="upsidedown suit">' + suitType + '</p>' +
           '</div>'
         );
+
+        var position = '#top-left';
+        for (var i = 0; i < response.length; i++) {
+          //change posiitons based on whos cards are what
+          if (i >= 1) {
+            position = "#bottom-left";
+          }
+          if (i >= 2) {
+            position = "#bottom-middle";
+          }
+          if (i >= 3) {
+            position = "#bottom-right";
+          }
+          if (i >= 4) {
+            position = "#top-right";
+          }
+          //player card 1
+          var cardColor = getCardColour(response[i][0].suit)
+          var suitType = getSuitType(response[i][0].suit);
+          var cardValue = getCardValue(response[i][0].value);
+          $(position).append('<div class="card" id="' + cardColor + '">' +
+            '<p class = "suit">' + suitType + '</p>' +
+            '<p class="cardtype"> ' + cardValue + '</p>' +
+            '<p class="upsidedown suit">' + suitType + '</p>' +
+            '</div>'
+          );
+
+          //player card 2
+          cardColor = getCardColour(response[i][1].suit)
+          suitType = getSuitType(response[i][1].suit);
+          cardValue = getCardValue(response[i][1].value);
+          $(position).append('<div class="card" id="' + cardColor + '">' +
+            '<p class = "suit">' + suitType + '</p>' +
+            '<p class="cardtype"> ' + cardValue + '</p>' +
+            '<p class="upsidedown suit">' + suitType + '</p>' +
+            '</div>'
+          );
+        }
       }
     }
   });
