@@ -43,7 +43,22 @@
     margin-bottom: 2px;
 
 }
+.card-back{
+  background: url('card-back.png');
+  background-size: 4em 5.5em;
+  background-repeat: no-repeat;
+  width: 4em;
+  height: 5.5em;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  display: inline-block;
+  margin-top: 2px;
+  margin-bottom: 2px;
+
+}
 .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.card-back:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 .card .suit {
