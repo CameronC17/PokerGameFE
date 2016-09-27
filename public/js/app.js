@@ -39,6 +39,20 @@ $(function() {
     $game.show();
     $homepage.hide();
   });
+
+  $('#bet').click(function() {
+    console.log('Raise Button');
+  })
+  $('#check').click(function() {
+    console.log('Check Button');
+  })
+  $('#fold').click(function() {
+    console.log('Fold button');
+  })
+  $('#call').click(function() {
+    console.log('Call button');
+  })
+
   $("#option1").click(function() {
     $("#stake").val(100);
   });
