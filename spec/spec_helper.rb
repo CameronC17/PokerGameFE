@@ -17,10 +17,10 @@ end
 def login
   @driver.find_element(id: "loginpage").click
   expect(@driver.title).to include "Login"
-  @driver.find_element(class: "username").send_keys @username
-  @driver.find_element(class: "password").send_keys @password
+  @driver.find_element(id: "username").send_keys @username
+  @driver.find_element(id: "password").send_keys @password
   @driver.find_element(id: "login-button").click
   expect(@driver.title).to include "Home"
-  welcome = @driver.find_element(id: "custom-msg").attribute("innerHTML")
-  expect(welcome).to include "Welcome, #{@username}"
+  # This currently fails due to it not carrying the username through - shows undefined
+  expect(@driver.find_element(id: "custom-msg").attribute("innerHTML")).to include "Welcome, #{@username}"
 end

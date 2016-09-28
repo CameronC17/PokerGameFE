@@ -16,14 +16,10 @@ describe "Poker game front end" do
   end
 
   it 'should have a home page that shows links to register, login and the game' do
-    home_link = @driver.find_element(id: "homepage").attribute("outerHTML")
-    expect(home_link).to include "<a", "Home"
-    register_link = @driver.find_element(id: "registerpage").attribute("outerHTML")
-    expect(register_link).to include "<a", "Register"
-    login_link = @driver.find_element(id: "loginpage").attribute("outerHTML")
-    expect(login_link).to include "a", "Login"
-    game_link = @driver.find_element(id: "gamepage").attribute("outerHTML")
-    expect(game_link).to include "a", "Game"
+    expect(@driver.find_element(id: "homepage").attribute("outerHTML")).to include "<a", "Home"
+    expect(@driver.find_element(id: "registerpage").attribute("outerHTML")).to include "<a", "Register"
+    expect(@driver.find_element(id: "loginpage").attribute("outerHTML")).to include "a", "Login"
+    expect(@driver.find_element(id: "gamepage").attribute("outerHTML")).to include "a", "Game"
   end
 
   it 'should provide users a way to register an account' do
@@ -33,19 +29,24 @@ describe "Poker game front end" do
     @driver.find_element(id: "registerpassword").send_keys @password
     @driver.find_element(id: "register-button").click
     expect(@driver.title).to include "Login"
-    success = @driver.find_element(id: "register-msg").attribute("innerHTML")
-    expect(success).to include "You have successfully registered. Now you can login"
+    expect(@driver.find_element(id: "register-msg").attribute("innerHTML")).to include "You have successfully registered. Now you can login"
   end
 
-  it 'should provide not allow users to register an account usin invalid details' do
+  it 'should not allow users to register an account using invalid details' do
     @driver.find_element(id: "registerpage").click
     expect(@driver.title).to include "Register"
+    # This will currently fail due to allowing you to register with nothing in the fields
+    @driver.find_element(id: "register-button").click
+    expect(@driver.title).to include "Register"
+    expect(@driver.find_element(id: "register-msg").attribute("innerHTML")).to include "Please enter a valid username and password."
     @driver.find_element(id: "registerusername").send_keys @username
+    @driver.find_element(id: "register-button").click
+    expect(@driver.title).to include "Register"
+    expect(@driver.find_element(id: "register-msg").attribute("innerHTML")).to include "Please enter a valid username."
     @driver.find_element(id: "registerpassword").send_keys @password
     @driver.find_element(id: "register-button").click
-    expect(@driver.title).to include "Login"
-    success = @driver.find_element(id: "register-msg").attribute("innerHTML")
-    expect(success).to include "You have successfully registered. Now you can login"
+    expect(@driver.title).to include "Register"
+    expect(@driver.find_element(id: "register-msg").attribute("innerHTML")).to include "Please enter a valid password."
   end
 
   it 'should provide registered users a way to login' do
@@ -53,18 +54,18 @@ describe "Poker game front end" do
   end
 
   it 'should not allow an unregistered user to login' do
-    @driver.find_element(id: "registerpage").click
-    expect(@driver.title).to include "Register"
-    @driver.find_element(class: "registerusername").send_keys ""
-    @driver.find_element(class: "registerpassword").send_keys ""
-    @driver.find_element(id: "register-button").click
-    expect(@driver.title).to include "Register"
+    @driver.find_element(id: "loginpage").click
+    expect(@driver.title).to include "Login"
+    @driver.find_element(id: "username").send_keys @invalid_username
+    @driver.find_element(id: "password").send_keys @invalid_password
+    @driver.find_element(id: "login-button").click
+    expect(@driver.title).to include "Login"
+    expect(@driver.find_element(id: "login-msg").attribute("innerHTML")).to include "A user does not exist with the given details"
   end
 
   it 'should not allow an unauthorised user to visit the game page' do
-    login
     @driver.find_element(id: "gamepage").click
-    puts "\nThis will fail atm due to no authorisation being included"
+    # This will fail atm due to no authorisation being included
     expect(@driver.title).to include "Login"
     expect(@driver.page_source).to include "You must login first before joining a game"
   end
@@ -76,20 +77,22 @@ describe "Poker game front end" do
       @driver.find_element(id: "gamepage").click
       @driver.find_element(id: gametype[i]).click
       @driver.find_element(id: "option1").click
-      stake = @driver.find_element(id: "stake").attribute("value")
-      expect(stake).to include "100"
+      expect(@driver.find_element(id: "stake").attribute("value")).to include "100"
       @driver.find_element(id: "option2").click
-      stake = @driver.find_element(id: "stake").attribute("value")
-      expect(stake).to include "50"
+      expect(@driver.find_element(id: "stake").attribute("value")).to include "50"
       @driver.find_element(id: "option3").click
-      stake = @driver.find_element(id: "stake").attribute("value")
-      expect(stake).to include "20"
+      expect(@driver.find_element(id: "stake").attribute("value")).to include "20"
       @driver.find_element(id: "stake").clear
       @driver.find_element(id: "stake").send_keys @stake
-      stake = @driver.find_element(id: "stake").attribute("value")
-      expect(stake).to include @stake
+      expect(@driver.find_element(id: "stake").attribute("value")).to include @stake
       @driver.get(@url)
     end
+  end
+
+  it 'should allow a game to be started and the first cards to be dealt' do
+    # click start button
+    # check the flop has occurred
+    # check each player has 2 cards
   end
 
 end
