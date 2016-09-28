@@ -50,7 +50,7 @@
                     </div>
                     <div>
                         <label>Password</label>
-                        <input type="password" id= "password" class="password" required>
+                        <input type="password" id="password" class="password" required>
                     </div>
                     <input type="button" value="Login" id="login-button">
                 </form>
@@ -67,7 +67,7 @@
             <h1>Register a Pokerbalmz account</h1>
             <div class="form-container">
 
-                  <form class="registerform">
+                <form class="registerform">
                     <div>
                         <label>Username</label>
                         <input type="text" class="username" id="registerusername" required>
@@ -129,19 +129,26 @@
             </div>
             <div class="seat" id="seat5">
             </div>
-          <div class="gamecontent">
-              <label for="stake">Stake:</label><br>
-              <input id="option1" type="button" name="stake" value="100"> edds<br>
-              <input id="option2" type="button" name="stake" value="50"> edds<br>
-              <input id="option3" type="button" name="stake" value="20"> edds<br>
-          <input  id="stake" type="number" name="stake" placeholder="Stake" required><br>
-          <button type="button" id="check">Check</button>
-          <button type="button" id="fold">Fold</button>
-          <button type="button" id="bet">Bet</button>
-          <button type="button" id="call">Call</button>
-          <button type="button" id="start">Start</button>
-       </div>
-       </div>
+            <div class="gamecontent">
+                <div class="singlemultiplayer">
+                    <button type="button" id="single">Single</button>
+                    <button type="button" id="multiplayer">Multiplayer</button>
+                </div>
+
+                <div id="gamebuttons">
+                    <label for="stake">Stake:</label><br>
+                    <input id="option1" type="button" name="stake" value="100"> edds<br>
+                    <input id="option2" type="button" name="stake" value="50"> edds<br>
+                    <input id="option3" type="button" name="stake" value="20"> edds<br>
+                    <input id="stake" type="number" name="stake" placeholder="Stake" required><br>
+                    <button type="button" id="check">Check</button>
+                    <button type="button" id="fold">Fold</button>
+                    <button type="button" id="bet">Bet</button>
+                    <button type="button" id="call">Call</button>
+                    <button type="button" id="start">Start</button>
+                </div>
+            </div>
+        </div>
     </section>
 </body>
 

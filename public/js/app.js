@@ -5,10 +5,29 @@ $(function() {
   $login = $('#login-section')
   $register = $('#register-section')
   $game = $('#game-section')
+  $gamebuttons = $('#gamebuttons')
+  $singleplayer = $('#single')
+  $multiplayer = $('#multiplayer')
 
+
+  $gamebuttons.hide();
   $login.hide();
   $register.hide();
   $game.hide();
+
+  $('#single').click(function() {
+    console.log("pressed view");
+    $gamebuttons.show();
+    $singleplayer.hide();
+    $multiplayer.hide();
+  });
+
+  $('#multiplayer').click(function() {
+    console.log("pressed view");
+    $gamebuttons.show();
+    $singleplayer.hide();
+    $multiplayer.hide();
+  });
 
   $('#loginpage').click(function() {
     console.log("pressed view");
@@ -61,6 +80,7 @@ $(function() {
     $register.hide();
     $game.hide();
     $homepage.hide();
+    $('#title').text("Pokerbalmz Login");
   });
 
 
@@ -119,7 +139,8 @@ function loginRequest(username, password) {
         $game.hide();
         $homepage.show();
         // window.location.href = "http://localhost:3001";
-        $('#custom-msg').append('<h1>Welcome, ' + username + '</h1>')
+        $('#custom-msg').append('<h1>Welcome, ' + username + '</h1>');
+        $('#title').text("Pokerbalmz Home");
 
       },
       400: function(response) {
@@ -281,7 +302,7 @@ function registerRequest(username, password) {
     },
     async: false,
     statusCode: {
-      200: function(response) {
+      201: function(response) {
          alert('Success');
 
         $login.show();
