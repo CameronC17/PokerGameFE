@@ -59,10 +59,10 @@
 }
 
 .deck-card {
-    background: url('edd.png');
+    background: url('E.png');
     background-size: 4em 5.5em;
     background-repeat: no-repeat;
-    border: 4px solid white;
+    /*border: 4px solid white;*/
     box-sizing: border-box;
     width: 4em;
     height: 5.5em;
@@ -70,15 +70,22 @@
     display: inline-block;
     margin-top: 2px;
     margin-bottom: 2px;
+    /*box-shadow: 0 0.0625em 0.1875em 0.1875em rgba(0, 0, 0, 0.1),
+     0 0.5em 0 -0.25em #f2f2f2, 0 0.5em 0.1875em -0.25em rgba(0, 0, 0, 0.1),
+     0 1em 0 -0.5em #e5e5e5, 0 1em 0.1875em -0.5em rgba(0, 0, 0, 0.1);*/
+
+}
+.deck{
+  display: block;
 }
 
 .card:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-.deck-card:hover {
+/*.deck-card:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
+}*/
 
 .card .suit {
     padding-bottom: 0.8em;
