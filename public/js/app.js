@@ -263,6 +263,7 @@ function userInput(bet, call, check, fold) {
     type: 'POST',
     dataType: 'json',
     data: {
+      "user": localStorage.getItem('user'),
       "bet": bet,
       "call": call,
       "check": check,
