@@ -5,10 +5,29 @@ $(function() {
   $login = $('#login-section')
   $register = $('#register-section')
   $game = $('#game-section')
+  $gamebuttons = $('#gamebuttons')
+  $singleplayer = $('#single')
+  $multiplayer = $('#multiplayer')
 
+
+  $gamebuttons.hide();
   $login.hide();
   $register.hide();
   $game.hide();
+
+  $('#single').click(function() {
+    console.log("pressed view");
+    $gamebuttons.show();
+    $singleplayer.hide();
+    $multiplayer.hide();
+  });
+
+  $('#multiplayer').click(function() {
+    console.log("pressed view");
+    $gamebuttons.show();
+    $singleplayer.hide();
+    $multiplayer.hide();
+  });
 
   $('#loginpage').click(function() {
     console.log("pressed view");
@@ -16,6 +35,7 @@ $(function() {
     $register.hide();
     $game.hide();
     $homepage.hide();
+    $('#title').text("Pokerbalmz Login");
   });
 
   $('#homepage').click(function() {
@@ -24,6 +44,7 @@ $(function() {
     $register.hide();
     $game.hide();
     $homepage.show();
+    $('#title').text("Pokerbalmz Home");
   });
 
   $('#registerpage').click(function() {
@@ -32,6 +53,7 @@ $(function() {
     $register.show();
     $game.hide();
     $homepage.hide();
+    $('#title').text("Pokerbalmz Register");
   });
 
   $('#gamepage').click(function() {
@@ -40,6 +62,7 @@ $(function() {
     $register.hide();
     $game.show();
     $homepage.hide();
+    $('#title').text("Pokerbalmz Game");
   });
 
   $('#login-button').click(function(e) {
@@ -47,7 +70,18 @@ $(function() {
     var username = $('#username').val();
     var password = $('#password').val();
     loginRequest(username, password);
-  })
+  });
+
+  $('#register-button').click(function(e) {
+    var username = $('#registerusername').val();
+    var password = $('#registerpassword').val();
+    registerRequest(username, password);
+    $login.show();
+    $register.hide();
+    $game.hide();
+    $homepage.hide();
+    $('#title').text("Pokerbalmz Login");
+  });
 
   $('#bet').click(function() {
     console.log('Raise Button');
@@ -103,6 +137,8 @@ function loginRequest(username, password) {
         localStorage.setItem('username', response.username);
         // window.location.href = "http://localhost:3001";
         $('#custom-msg').append('<h1>Welcome, ' + localStorage.getItem('username') + '</h1>')
+        $('#custom-msg').append('<h1>Welcome, ' + username + '</h1>');
+        $('#title').text("Pokerbalmz Home");
 
       },
       400: function(response) {
@@ -173,27 +209,6 @@ function startGame() {
     data: { user : userID},
     statusCode: {
       200: function(response) {
-        // player 1 card 1
-        var cardColor = getCardColour(response[0][0].suit)
-        var suitType = getSuitType(response[0][0].suit);
-        var cardValue = getCardValue(response[0][0].value);
-        $('#left').append('<div class="card" id="' + cardColor + '">' +
-          '<p class = "suit">' + suitType + '</p>' +
-          '<p class="cardtype"> ' + cardValue + '</p>' +
-          '<p class="upsidedown suit">' + suitType + '</p>' +
-          '</div>'
-        );
-        // player 1 card 2
-        cardColor = getCardColour(response[0][1].suit)
-        suitType = getSuitType(response[0][1].suit);
-        cardValue = getCardValue(response[0][1].value);
-        $('#left').append('<div class="card" id="' + cardColor + '">' +
-          '<p class = "suit">' + suitType + '</p>' +
-          '<p class="cardtype"> ' + cardValue + '</p>' +
-          '<p class="upsidedown suit">' + suitType + '</p>' +
-          '</div>'
-        );
-
         var position = '#top-left';
         for (var i = 0; i < response.length; i++) {
           //change posiitons based on whos cards are what
@@ -232,6 +247,51 @@ function startGame() {
           );
         }
       }
+    }
+  });
+}
+
+
+function userInput(bet, call, check, fold) {
+  $.ajax({
+    url: "http://localhost:3000/api/games",
+    type: 'POST',
+    dataType: 'json',
+    data: {
+      "bet": bet,
+      "call": call,
+      "check": check,
+      "fold": fold
+    },
+    async: false,
+    statusCode: {
+      200: function(response) {
+      }
+    }
+  });
+}
+
+function registerRequest(username, password) {
+  $.ajax({
+    url: "http://localhost:3000/api/users",
+    type: 'POST',
+    dataType: 'json',
+    data: {
+      "username": username,
+      "password": password
+    },
+    async: false,
+    statusCode: {
+      201: function(response) {
+         alert('Success');
+
+        $login.show();
+        $register.hide();
+        $game.hide();
+        $homepage.hide();
+        // window.location.href = "http://localhost:3001/users";
+
+      },
     }
   });
 }
