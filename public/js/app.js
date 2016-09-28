@@ -49,17 +49,22 @@ $(function() {
     loginRequest(username, password);
   })
 
+
+//function userInput(bet, call, check, fold) {
   $('#bet').click(function() {
-    console.log('Raise Button');
+    // console.log('Raise Button');
+    userInput($("#stake").val(), false, false, false);
   })
   $('#check').click(function() {
-    console.log('Check Button');
+    // console.log('Check Button');
+    userInput(false, false, true, false);
   })
   $('#fold').click(function() {
-    console.log('Fold button');
+    // console.log('Fold button');
+    userInput(false, false, false, true);
   })
   $('#call').click(function() {
-    console.log('Call button');
+    userInput(false, true, false, false);
   })
   $('#start').click(function() {
     console.log('start');
@@ -227,6 +232,40 @@ function startGame() {
             '</div>'
           );
         }
+      }
+    }
+  });
+}
+
+function userInput(bet, call, check, fold) {
+  $.ajax({
+    url: "http://localhost:3000/api/games",
+    type: 'POST',
+    dataType: 'json',
+    data: {
+      "bet": bet,
+      "call": call,
+      "check": check,
+      "fold": fold
+    },
+    async: false,
+    statusCode: {
+      200: function(response) {
+        // alert('Success');
+
+        // $login.hide();
+        // $register.hide();
+        // $game.hide();
+        // $homepage.show();
+        // window.location.href = "http://localhost:3001";
+        // $('#custom-msg').append('<h1>Welcome, ' + username + '</h1>')
+
+      },
+      400: function(response) {
+        alert('Unsuccessful');
+        $('.error-msg').html("<p>A user does not exist with the given details</p>");
+        $('#username').val("");
+        $('#password').val("");
       }
     }
   });
