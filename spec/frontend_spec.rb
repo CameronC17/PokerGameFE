@@ -7,6 +7,8 @@ describe "Poker game front end" do
     @password = "password"
     @wallet = 100
     @stake = "1000"
+    @invalid_username = "invalid invalid invalid"
+    @invalid_password = "thisisawrongpassword"
   end
 
   before:each do
@@ -35,11 +37,32 @@ describe "Poker game front end" do
     expect(success).to include "You have successfully registered. Now you can login"
   end
 
-  it 'should provide users a way to login' do
+  it 'should provide not allow users to register an account usin invalid details' do
+    @driver.find_element(id: "registerpage").click
+    expect(@driver.title).to include "Register"
+    @driver.find_element(id: "registerusername").send_keys @username
+    @driver.find_element(id: "registerpassword").send_keys @password
+    @driver.find_element(id: "register-button").click
+    expect(@driver.title).to include "Login"
+    success = @driver.find_element(id: "register-msg").attribute("innerHTML")
+    expect(success).to include "You have successfully registered. Now you can login"
+  end
+
+  it 'should provide registered users a way to login' do
     login
   end
 
+  it 'should not allow an unregistered user to login' do
+    @driver.find_element(id: "registerpage").click
+    expect(@driver.title).to include "Register"
+    @driver.find_element(class: "registerusername").send_keys ""
+    @driver.find_element(class: "registerpassword").send_keys ""
+    @driver.find_element(id: "register-button").click
+    expect(@driver.title).to include "Register"
+  end
+
   it 'should not allow an unauthorised user to visit the game page' do
+    login
     @driver.find_element(id: "gamepage").click
     puts "\nThis will fail atm due to no authorisation being included"
     expect(@driver.title).to include "Login"
