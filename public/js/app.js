@@ -49,22 +49,17 @@ $(function() {
     loginRequest(username, password);
   })
 
-
-//function userInput(bet, call, check, fold) {
   $('#bet').click(function() {
-    // console.log('Raise Button');
-    userInput($("#stake").val(), false, false, false);
+    console.log('Raise Button');
   })
   $('#check').click(function() {
-    // console.log('Check Button');
-    userInput(false, false, true, false);
+    console.log('Check Button');
   })
   $('#fold').click(function() {
-    // console.log('Fold button');
-    userInput(false, false, false, true);
+    console.log('Fold button');
   })
   $('#call').click(function() {
-    userInput(false, true, false, false);
+    console.log('Call button');
   })
   $('#start').click(function() {
     console.log('start');
@@ -98,14 +93,16 @@ function loginRequest(username, password) {
     async: false,
     statusCode: {
       200: function(response) {
-        // alert('Success');
 
         $login.hide();
         $register.hide();
         $game.hide();
         $homepage.show();
+        // window.local = response.user;
+        localStorage.setItem('user', response.user);
+        localStorage.setItem('username', response.username);
         // window.location.href = "http://localhost:3001";
-        $('#custom-msg').append('<h1>Welcome, ' + username + '</h1>')
+        $('#custom-msg').append('<h1>Welcome, ' + localStorage.getItem('username') + '</h1>')
 
       },
       400: function(response) {
@@ -168,10 +165,12 @@ function getSuitType(suit) {
 }
 
 function startGame() {
+  var userID = localStorage.getItem('user');
   $.ajax({
     url: "http://localhost:3000/api/games/new",
     type: 'POST',
     async: false,
+    data: { user : userID},
     statusCode: {
       200: function(response) {
         // player 1 card 1
@@ -214,7 +213,7 @@ function startGame() {
           var cardColor = getCardColour(response[i][0].suit)
           var suitType = getSuitType(response[i][0].suit);
           var cardValue = getCardValue(response[i][0].value);
-          $(position).append('<div class="card" id="' + cardColor + '">' +
+          $(position).html('<div class="card" id="' + cardColor + '">' +
             '<p class = "suit">' + suitType + '</p>' +
             '<p class="cardtype"> ' + cardValue + '</p>' +
             '<p class="upsidedown suit">' + suitType + '</p>' +
@@ -232,40 +231,6 @@ function startGame() {
             '</div>'
           );
         }
-      }
-    }
-  });
-}
-
-function userInput(bet, call, check, fold) {
-  $.ajax({
-    url: "http://localhost:3000/api/games",
-    type: 'POST',
-    dataType: 'json',
-    data: {
-      "bet": bet,
-      "call": call,
-      "check": check,
-      "fold": fold
-    },
-    async: false,
-    statusCode: {
-      200: function(response) {
-        // alert('Success');
-
-        // $login.hide();
-        // $register.hide();
-        // $game.hide();
-        // $homepage.show();
-        // window.location.href = "http://localhost:3001";
-        // $('#custom-msg').append('<h1>Welcome, ' + username + '</h1>')
-
-      },
-      400: function(response) {
-        alert('Unsuccessful');
-        $('.error-msg').html("<p>A user does not exist with the given details</p>");
-        $('#username').val("");
-        $('#password').val("");
       }
     }
   });
