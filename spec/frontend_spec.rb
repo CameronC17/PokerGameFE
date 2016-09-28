@@ -1,18 +1,19 @@
-describe "Poker game front end" do 
+describe "Poker game front end" do
 
-  before:all do 
+  before:all do
     @driver = Selenium::WebDriver.for :chrome
-    @url = "localhost:3000"
-    @username = "test1"
+    @url = "localhost:3001"
+    @username = "testz"
     @password = "password"
-    @wallet = "100"
+    @wallet = 100
+    @stake = "1000"
   end
 
-  before:each do 
+  before:each do
     @driver.get(@url)
   end
 
-  it 'should have a home page that shows links to register, login and the game' do 
+  it 'should have a home page that shows links to register, login and the game' do
     home_link = @driver.find_element(id: "homepage").attribute("outerHTML")
     expect(home_link).to include "<a", "Home"
     register_link = @driver.find_element(id: "registerpage").attribute("outerHTML")
@@ -23,39 +24,49 @@ describe "Poker game front end" do
     expect(game_link).to include "a", "Game"
   end
 
-  it 'should provide users a way to register an account' do 
+  it 'should provide users a way to register an account' do
     @driver.find_element(id: "registerpage").click
-    puts "\nThis will fail due to the title not changing"
     expect(@driver.title).to include "Register"
-    @driver.find_element(class: "username").send_keys @username
-    @driver.find_element(class: "password").send_keys @password
-    submit = @driver.find_elements(css: ".loginform input")
-    submit[-1].click
-    # This is commented out as it is currently failing and will do until redirect pages work correctly and have titles
-    # expect(@driver.title).to include "Login"
+    @driver.find_element(id: "registerusername").send_keys @username
+    @driver.find_element(id: "registerpassword").send_keys @password
+    @driver.find_element(id: "register-button").click
+    expect(@driver.title).to include "Login"
+    success = @driver.find_element(id: "register-msg").attribute("innerHTML")
+    expect(success).to include "You have successfully registered. Now you can login"
   end
 
   it 'should provide users a way to login' do
-    @driver.find_element(id: "loginpage").click
-    puts "\nThis will fail due to the title not changing"
-    expect(@driver.title).to include "Login"
-    @driver.find_element(class: "username").send_keys @username
-    @driver.find_element(class: "password").send_keys @password
-    submit = @driver.find_elements(css: ".loginform input")
-    submit[-1].click
-    # This is commented out as it is currently failing and will do until redirect pages work correctly and have titles
-    # expect(@driver.title).to include "Game"
+    login
   end
 
-  it 'should not allow an unauthorised user to visit the game page' do 
+  it 'should not allow an unauthorised user to visit the game page' do
     @driver.find_element(id: "gamepage").click
-     puts "\nThis will fail atm due to no authorisation being included"
+    puts "\nThis will fail atm due to no authorisation being included"
     expect(@driver.title).to include "Login"
     expect(@driver.page_source).to include "You must login first before joining a game"
   end
 
-  it 'should allow the user to select different stakes' do 
-
+  it 'should allow the user to select different stakes for single player and multiplayer games' do
+    # Once authorisation is working I will need a login method made and linked here
+    gametype = ["single", "multiplayer"]
+    2.times do |i|
+      @driver.find_element(id: "gamepage").click
+      @driver.find_element(id: gametype[i]).click
+      @driver.find_element(id: "option1").click
+      stake = @driver.find_element(id: "stake").attribute("value")
+      expect(stake).to include "100"
+      @driver.find_element(id: "option2").click
+      stake = @driver.find_element(id: "stake").attribute("value")
+      expect(stake).to include "50"
+      @driver.find_element(id: "option3").click
+      stake = @driver.find_element(id: "stake").attribute("value")
+      expect(stake).to include "20"
+      @driver.find_element(id: "stake").clear
+      @driver.find_element(id: "stake").send_keys @stake
+      stake = @driver.find_element(id: "stake").attribute("value")
+      expect(stake).to include @stake
+      @driver.get(@url)
+    end
   end
 
 end
