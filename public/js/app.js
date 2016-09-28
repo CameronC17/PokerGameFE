@@ -72,6 +72,7 @@ $(function() {
     loginRequest(username, password);
   });
 
+
   $('#register-button').click(function(e) {
     var username = $('#registerusername').val();
     var password = $('#registerpassword').val();
@@ -83,27 +84,25 @@ $(function() {
     $('#title').text("Pokerbalmz Login");
   });
 
-
-//function userInput(bet, call, check, fold) {
   $('#bet').click(function() {
-    // console.log('Raise Button');
-    userInput($("#stake").val(), false, false, false);
-  })
-  $('#check').click(function() {
-    // console.log('Check Button');
-    userInput(false, false, true, false);
-  })
-  $('#fold').click(function() {
-    // console.log('Fold button');
-    userInput(false, false, false, true);
-  })
-  $('#call').click(function() {
-    userInput(false, true, false, false);
-  })
-  $('#start').click(function() {
-    console.log('start');
-    startGame();
-  })
+  // console.log('Raise Button');
+  userInput($("#stake").val(), false, false, false);
+})
+$('#check').click(function() {
+  // console.log('Check Button');
+  userInput(false, false, true, false);
+})
+$('#fold').click(function() {
+  // console.log('Fold button');
+  userInput(false, false, false, true);
+})
+$('#call').click(function() {
+  userInput(false, true, false, false);
+})
+$('#start').click(function() {
+  console.log('start');
+  startGame();
+})
 
   $("#option1").click(function() {
     $("#stake").val(100);
@@ -132,14 +131,18 @@ function loginRequest(username, password) {
     async: false,
     statusCode: {
       200: function(response) {
-        // alert('Success');
 
         $login.hide();
         $register.hide();
         $game.hide();
         $homepage.show();
+        // window.local = response.user;
+        localStorage.setItem('user', response.user);
+        localStorage.setItem('username', response.username);
         // window.location.href = "http://localhost:3001";
-        $('#custom-msg').append('<h1>Welcome, ' + username + '</h1>');
+
+        $('#custom-msg').append('<h1>Welcome, ' + localStorage.getItem('username') + '</h1>')
+
         $('#title').text("Pokerbalmz Home");
 
       },
@@ -203,33 +206,14 @@ function getSuitType(suit) {
 }
 
 function startGame() {
+  var userID = localStorage.getItem('user');
   $.ajax({
     url: "http://localhost:3000/api/games/new",
     type: 'POST',
     async: false,
+    data: { user : userID},
     statusCode: {
       200: function(response) {
-        // player 1 card 1
-        var cardColor = getCardColour(response[0][0].suit)
-        var suitType = getSuitType(response[0][0].suit);
-        var cardValue = getCardValue(response[0][0].value);
-        $('#left').append('<div class="card" id="' + cardColor + '">' +
-          '<p class = "suit">' + suitType + '</p>' +
-          '<p class="cardtype"> ' + cardValue + '</p>' +
-          '<p class="upsidedown suit">' + suitType + '</p>' +
-          '</div>'
-        );
-        // player 1 card 2
-        cardColor = getCardColour(response[0][1].suit)
-        suitType = getSuitType(response[0][1].suit);
-        cardValue = getCardValue(response[0][1].value);
-        $('#left').append('<div class="card" id="' + cardColor + '">' +
-          '<p class = "suit">' + suitType + '</p>' +
-          '<p class="cardtype"> ' + cardValue + '</p>' +
-          '<p class="upsidedown suit">' + suitType + '</p>' +
-          '</div>'
-        );
-
         var position = '#top-left';
         for (var i = 0; i < response.length; i++) {
           //change posiitons based on whos cards are what
@@ -249,7 +233,7 @@ function startGame() {
           var cardColor = getCardColour(response[i][0].suit)
           var suitType = getSuitType(response[i][0].suit);
           var cardValue = getCardValue(response[i][0].value);
-          $(position).append('<div class="card" id="' + cardColor + '">' +
+          $(position).html('<div class="card" id="' + cardColor + '">' +
             '<p class = "suit">' + suitType + '</p>' +
             '<p class="cardtype"> ' + cardValue + '</p>' +
             '<p class="upsidedown suit">' + suitType + '</p>' +
@@ -271,6 +255,7 @@ function startGame() {
     }
   });
 }
+
 
 function userInput(bet, call, check, fold) {
   $.ajax({
@@ -305,6 +290,7 @@ function registerRequest(username, password) {
       201: function(response) {
         //  alert('Success');
         $('#register-msg').append('<p>You have successfully registered. Now you can login</p>');
+
 
         $login.show();
         $register.hide();
