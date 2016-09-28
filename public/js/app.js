@@ -147,8 +147,8 @@ function loginRequest(username, password) {
 
       },
       400: function(response) {
-        alert('Unsuccessful');
-        $('.error-msg').html("<p>A user does not exist with the given details</p>");
+        $('#login-msg').append('<p>A user does not exist with the given details</p>');
+        $('#register-msg').hide();
         $('#username').val("");
         $('#password').val("");
       }
@@ -291,8 +291,6 @@ function registerRequest(username, password) {
       201: function(response) {
         //  alert('Success');
         $('#register-msg').append('<p>You have successfully registered. Now you can login</p>');
-
-
         $login.show();
         $register.hide();
         $game.hide();
@@ -300,6 +298,11 @@ function registerRequest(username, password) {
         // window.location.href = "http://localhost:3001/users";
 
       },
+      400: function(response) {
+        $('#registerpage-msg').append('<p>You have failed to registered</p>');
+        $('#username').val("");
+        $('#password').val("");
+      }
     }
   });
 }
