@@ -7,6 +7,11 @@ section {
   height: 100%;
 }
 
+#register-msg{
+  color: red;
+  font-size: 12px;
+}
+
 h1{
   font-size: 30px;
 }

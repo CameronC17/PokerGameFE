@@ -303,7 +303,8 @@ function registerRequest(username, password) {
     async: false,
     statusCode: {
       201: function(response) {
-         alert('Success');
+        //  alert('Success');
+        $('#register-msg').append('<p>You have successfully registered. Now you can login</p>');
 
         $login.show();
         $register.hide();
