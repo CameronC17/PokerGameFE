@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/game.css">
     <link href="https://fonts.googleapis.com/css?family=Lusitana" rel="stylesheet">
-    <title>Pokerbalmz Home</title>
+    <title id="title">Pokerbalmz Home</title>
 </head>
 
 <body>
@@ -66,16 +66,17 @@
         <div class="form-content">
             <h1>Register a Pokerbalmz account</h1>
             <div class="form-container">
-                <form class="loginform" action="http://localhost:3000/api/users/register" method="POST">
+
+                  <form class="registerform">
                     <div>
                         <label>Username</label>
-                        <input type="text" name="username" class="username" required>
+                        <input type="text" class="username" id="registerusername" required>
                     </div>
                     <div>
                         <label>Password</label>
-                        <input type="password" name="password" class="password" required>
+                        <input type="password" class="password" id="registerpassword" required>
                     </div>
-                    <input type="submit" value="Register" id="login-button">
+                    <input type="button" value="Register" id="register-button">
                 </form>
             </div>
         </div>
