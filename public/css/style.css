@@ -12,6 +12,16 @@ section {
   font-size: 12px;
 }
 
+#login-msg{
+  color: red;
+  font-size: 12px;
+}
+
+#registerpage-msg{
+  color: red;
+  font-size: 12px;
+}
+
 h1{
   font-size: 30px;
 }
