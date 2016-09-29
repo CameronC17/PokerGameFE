@@ -1,30 +1,21 @@
 @import 'https://fonts.googleapis.com/css?family=Open+Sans';
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
 html, body {
-    font-family: 'Open Sans', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 section {
-  height: 100%;
+    height: 100%;
 }
-
-#register-msg{
+.message{
   color: red;
   font-size: 12px;
 }
 
-#login-msg{
-  color: red;
-  font-size: 12px;
+h1 {
+    font-size: 30px;
 }
 
-#registerpage-msg{
-  color: red;
-  font-size: 12px;
-}
-
-h1{
-  font-size: 30px;
-}
 .home-content {
     width: 80%;
     margin-top: 25px;
@@ -32,25 +23,45 @@ h1{
 }
 
 .home-content * {
-  padding-top: 10px;
+    padding-top: 10px;
 }
+
 .form-content {
     text-align: center;
 }
 
 .loginform {
-    display: inline-block;
-    width: 100%;
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    max-width: 360px;
+    margin-top: 5em;
+    margin-left: 30em;
+    padding: 45px;
     text-align: center;
-    margin: 0 auto;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.registerform{
+    margin-top: 5em;
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin-top: 5em;
+  margin-left: 30em;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+
 }
 
 .navbar {
     text-align: right;
     width: 100%;
-    height: 50px;
+    height: 60px;
     display: inline-block;
-    border-bottom: 1px solid black;
+    /*border-bottom: 1px solid black;*/
     box-sizing: border-box;
     top: 0;
     text-align: center;
@@ -75,39 +86,61 @@ h1{
     display: inline-block;
 }
 
-#logo {
+/*#logo {
     padding-top: 20px;
     width: 250px;
     float: left;
     font-size: 1em;
     display: inline-block;
     text-align: left;
-}
+}*/
 
+#logo{
+  width: 300px;
+  height: 90px;
+  float: left;
+  margin-left: 10px;
+}
 #login-button {
-    background-color: #ccc;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 6px;
-    color: #fff;
-    margin-top: 10px;
-    font-family: 'Open Sans';
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #4CAF50;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
     font-size: 14px;
-    text-decoration: none;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
     cursor: pointer;
-    width: 100px;
 }
 
-.form-container {
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 6px;
-    font-size: 24px;
-    padding-top: 10%;
-    border: solid 1px black;
-    width: 50%;
-    margin: 0 auto;
-    height: 300px;
+#register-button {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #4CAF50;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+}
+
+.form-container input {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
 }
 
 .button {
@@ -125,12 +158,11 @@ h1{
     text-decoration: none;
 }
 
-
-#custom-msg{
-  display: inline-block;
-  float: left;
-  width: 250px;
-  text-align: center;
-  margin-left: 300px;
-  padding-top: 15px;
+#custom-msg {
+    display: inline-block;
+    float: left;
+    width: 250px;
+    text-align: center;
+    margin-left: 300px;
+    padding-top: 15px;
 }
