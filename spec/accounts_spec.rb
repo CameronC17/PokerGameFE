@@ -70,8 +70,7 @@ describe "Poker game front end" do
 
   it 'should not allow an unauthorised user to start a game' do
     @driver.find_element(id: "gamepage").click
-    # currently fails as i do not have alert popping on my local copy
-    expect(@driver.page_source).to include "You have to login in order to play."
+    @driver.switch_to.alert.accept
   end
 
   after:all do

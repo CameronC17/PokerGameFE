@@ -13,10 +13,13 @@ describe "Poker game front end" do
   end
 
   it 'should allow the user to select different stakes for single player and multiplayer games' do
-    login
+
     gametype = ["single", "multiplayer"]
     2.times do |i|
+      login
       @driver.find_element(id: "gamepage").click
+      # This next line will need taking out once the pop ups stop appearing
+      @driver.switch_to.alert.accept
       @driver.find_element(id: gametype[i]).click
       @driver.find_element(id: "option1").click
       expect(@driver.find_element(id: "stake").attribute("value")).to include "100"
@@ -32,11 +35,13 @@ describe "Poker game front end" do
   end
 
   it 'should allow a game to be started and the first cards to be dealt (flop and player cards)' do
-    login
     gametype = ["single", "multiplayer"]
     player_position = ["top-left", "top-right", "bottom-left", "bottom-middle", "bottom-right"]
     2.times do |game|
+      login
       @driver.find_element(id: "gamepage").click
+      # This next line will need taking out once the pop ups stop appearing
+      @driver.switch_to.alert.accept
       @driver.find_element(id: gametype[game]).click
       @driver.find_element(id: "start").click
       5.times do |player|
@@ -72,10 +77,6 @@ describe "Poker game front end" do
   end
 
   it 'should allow the user to fold' do
-
-  end
-
-  it 'should allow the user to logout' do
 
   end
 

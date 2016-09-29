@@ -164,7 +164,6 @@ function loginRequest(username, password) {
 
       },
       400: function(response) {
-        alert('Unsuccessful');
         $('.error-msg').html("<p>A user does not exist with the given details</p>");
         $('#username').val("");
         $('#password').val("");
