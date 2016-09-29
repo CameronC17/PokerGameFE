@@ -57,12 +57,20 @@ $(function() {
   });
 
   $('#gamepage').click(function() {
-    console.log("pressed view");
-    $login.hide();
-    $register.hide();
-    $game.show();
-    $homepage.hide();
-    $('#title').text("Pokerbalmz Game");
+    // console.log(localStorage.getItem('user'));
+    // if (localStorage.getItem('user')) {
+    //
+    //     console.log("pressed view");
+    //     $login.hide();
+    //     $register.hide();
+    //     $game.show();
+    //     $homepage.hide();
+    //     $('#title').text("Pokerbalmz Game");
+    //
+    // } else {
+    //   alert("You have to login in order to play");
+    // }
+    alert("You have to login in order to play");
   });
 
   $('#login-button').click(function(e) {
@@ -144,6 +152,15 @@ function loginRequest(username, password) {
         $('#custom-msg').append('<h1>Welcome, ' + localStorage.getItem('username') + '</h1>')
 
         $('#title').text("Pokerbalmz Home");
+
+        $('#gamepage').click(function() {
+        console.log("pressed view");
+        $login.hide();
+        $register.hide();
+        $game.show();
+        $homepage.hide();
+        $('#title').text("Pokerbalmz Game");
+      });
 
       },
       400: function(response) {
