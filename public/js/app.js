@@ -164,8 +164,8 @@ function loginRequest(username, password) {
 
       },
       400: function(response) {
-        $('#login-msg').append('<p>A user does not exist with the given details</p>');
-        $('#register-msg').hide();
+        alert('Unsuccessful');
+        $('.error-msg').html("<p>A user does not exist with the given details</p>");
         $('#username').val("");
         $('#password').val("");
       }
@@ -247,7 +247,7 @@ function startGame() {
             position = "#top-right";
           }
           //player card 1
-          var cardColor = getCardColour(response[i][0].suit);
+          var cardColor = getCardColour(response[i][0].suit)
           var suitType = getSuitType(response[i][0].suit);
           var cardValue = getCardValue(response[i][0].value);
           $(position).html('<div class="card" id="' + cardColor + '">' +
@@ -258,7 +258,7 @@ function startGame() {
           );
 
           //player card 2
-          cardColor = getCardColour(response[i][1].suit);
+          cardColor = getCardColour(response[i][1].suit)
           suitType = getSuitType(response[i][1].suit);
           cardValue = getCardValue(response[i][1].value);
           $(position).append('<div class="card" id="' + cardColor + '">' +
@@ -308,6 +308,8 @@ function registerRequest(username, password) {
       201: function(response) {
         //  alert('Success');
         $('#register-msg').append('<p>You have successfully registered. Now you can login</p>');
+
+
         $login.show();
         $register.hide();
         $game.hide();
@@ -315,11 +317,6 @@ function registerRequest(username, password) {
         // window.location.href = "http://localhost:3001/users";
 
       },
-      400: function(response) {
-        $('#registerpage-msg').append('<p>You have failed to registered</p>');
-        $('#username').val("");
-        $('#password').val("");
-      }
     }
   });
 }
