@@ -61,7 +61,7 @@ describe "Poker game front end" do
     @driver.find_element(id: "password").send_keys @invalid_password
     @driver.find_element(id: "login-button").click
     expect(@driver.title).to include "Login"
-    expect(@driver.find_element(id: "login-msg").attribute("innerHTML")).to include "A user does not exist with the given details"
+    expect(@driver.find_element(class: "error-msg").attribute("innerHTML")).to include "A user does not exist with the given details"
   end
 
   it 'should allow the user to logout' do
