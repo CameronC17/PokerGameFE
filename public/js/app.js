@@ -135,7 +135,7 @@ $('#start').click(function() {
 
 function loginRequest(username, password) {
   $.ajax({
-    url: "http://localhost:3000/api/users/login",
+    url: API_URL + "/api/users/login",
     type: 'POST',
     dataType: 'json',
     data: {
@@ -230,7 +230,7 @@ function getSuitType(suit) {
 function startGame() {
   var userID = localStorage.getItem('user');
   $.ajax({
-    url: "http://localhost:3000/api/games/new",
+    url: API_URL + "/api/games/new",
     type: 'POST',
     async: false,
     data: { user : userID},
@@ -281,7 +281,7 @@ function startGame() {
 
 function userInput(bet, call, check, fold) {
   $.ajax({
-    url: "http://localhost:3000/api/games",
+    url: API_URL + "/api/games",
     type: 'POST',
     dataType: 'json',
     data: {
@@ -325,7 +325,7 @@ function userInput(bet, call, check, fold) {
 
 function registerRequest(username, password) {
   $.ajax({
-    url: "http://localhost:3000/api/users",
+    url: API_URL + "api/users",
     type: 'POST',
     dataType: 'json',
     data: {
