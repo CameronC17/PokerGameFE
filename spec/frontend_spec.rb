@@ -91,25 +91,17 @@ describe "Poker game front end" do
 
   it 'should allow a game to be started and the first cards to be dealt' do
     gametype = ["single", "multiplayer"]
-    player
     2.times do |i|
       @driver.find_element(id: "gamepage").click
       @driver.find_element(id: gametype[i]).click
       @driver.find_element(id: "start").click
-      cards = @driver.find_elements(css: "#top-left div")
-      expect(cards.length).to eq 2
-      cards = @driver.find_elements(css: "#top-right div")
-      expect(cards.length).to eq 2
-      cards = @driver.find_elements(css: "#bottom-left div")
-      expect(cards.length).to eq 2
-      cards = @driver.find_elements(css: "#bottom-middle div")
-      expect(cards.length).to eq 2
-      cards = @driver.find_elements(css: "#bottom-right div")
-      expect(cards.length).to eq 2
+      expect(@driver.find_elements(css: "#top-left div").length).to eq 2
+      expect(@driver.find_elements(css: "#top-right div").length).to eq 2
+      expect(@driver.find_elements(css: "#bottom-left div").length).to eq 2
+      expect(@driver.find_elements(css: "#bottom-middle div").length).to eq 2
+      expect(@driver.find_elements(css: "#bottom-right div").length).to eq 2
       @driver.get(@url)
     end
-    # click start button
-    # check each player has 2 cards
     # check the flop has occurred
   end
 
