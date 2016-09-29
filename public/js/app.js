@@ -122,9 +122,6 @@ $('#start').click(function() {
     $("#stake").val(20);
   });
 
-
-
-
 });
 
 function loginRequest(username, password) {
