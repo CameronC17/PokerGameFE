@@ -42,7 +42,38 @@
     right: 0;
     bottom: 0;
 }
+/*############################# EDDS #####################*/
 
+.edds{
+  background-color: orange;
+  margin:5em;
+  /*font-size:1.2em;*/
+  text-align: center;
+  color: white;
+  position:relative;
+  display:inline-block;
+  -webkit-box-sizing:border-box;
+  -moz-box-sizing:border-box;
+  box-sizing:border-box;
+  width:2.3em;
+  height:2.3em;
+  border-radius:50%;
+  position:relative;
+  border:.2em dashed white;
+  transition:all .5s ease;
+  backface-visibility:hidden;
+  display: inline-block;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+.edds:hover{
+  transform:rotate(180deg);
+}
+
+#eddValue{
+  margin-top: .4em;
+  text-align: center;
+  display: inline-block;
+}
 
 /*################ Cards ################*/
 

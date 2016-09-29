@@ -70,7 +70,16 @@ $(function() {
     // } else {
     //   alert("You have to login in order to play");
     // }
-    alert("You have to login in order to play");
+    if(localStorage.getItem('username')){
+          $login.hide();
+          $register.hide();
+          $game.show();
+          $homepage.hide();
+          $('#title').text("Pokerbalmz Game");
+
+      } else {
+        alert("You have to login in order to play");
+      }
   });
 
   $('#login-button').click(function(e) {
@@ -150,18 +159,17 @@ function loginRequest(username, password) {
 
         $('#title').text("Pokerbalmz Home");
 
-        $('#gamepage').click(function() {
-        console.log("pressed view");
-        $login.hide();
-        $register.hide();
-        $game.show();
-        $homepage.hide();
-        $('#title').text("Pokerbalmz Game");
-      });
+      //   $('#gamepage').click(function() {
+      //   console.log("pressed view");
+      //   $login.hide();
+      //   $register.hide();
+      //   $game.show();
+      //   $homepage.hide();
+      //   $('#title').text("Pokerbalmz Game");
+      // });
 
       },
       400: function(response) {
-        alert('Unsuccessful');
         $('.error-msg').html("<p>A user does not exist with the given details</p>");
         $('#username').val("");
         $('#password').val("");
@@ -331,9 +339,7 @@ function registerRequest(username, password) {
     async: false,
     statusCode: {
       201: function(response) {
-        //  alert('Success');
         $('#register-msg').append('<p>You have successfully registered. Now you can login</p>');
-
 
         $login.show();
         $register.hide();
