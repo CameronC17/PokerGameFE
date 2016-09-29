@@ -21,6 +21,5 @@ def login
   @driver.find_element(id: "password").send_keys @password
   @driver.find_element(id: "login-button").click
   expect(@driver.title).to include "Home"
-  # This currently fails due to it not carrying the username through - shows undefined
   expect(@driver.find_element(id: "custom-msg").attribute("innerHTML")).to include "Welcome, #{@username}"
 end
