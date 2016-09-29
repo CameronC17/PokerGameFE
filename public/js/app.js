@@ -265,6 +265,10 @@ function startGame() {
             '</div>'
           );
         }
+
+
+
+
       }
     }
   });
@@ -286,6 +290,30 @@ function userInput(bet, call, check, fold) {
     async: false,
     statusCode: {
       200: function(response) {
+        console.log(response);
+        var position = '#top-middle';
+        for (var i = 0; i < response.length; i++) {
+          //change posiitons based on whos cards are what
+          //player card 1
+          var cardColor = getCardColour(response[i].suit)
+          var suitType = getSuitType(response[i].suit);
+          var cardValue = getCardValue(response[i].value);
+          if(i == 0){
+            $(position).html('<div class="card" id="' + cardColor + '">' +
+              '<p class = "suit">' + suitType + '</p>' +
+              '<p class="cardtype"> ' + cardValue + '</p>' +
+              '<p class="upsidedown suit">' + suitType + '</p>' +
+              '</div>'
+              );
+          }else{
+            $(position).append('<div class="card" id="' + cardColor + '">' +
+              '<p class = "suit">' + suitType + '</p>' +
+              '<p class="cardtype"> ' + cardValue + '</p>' +
+              '<p class="upsidedown suit">' + suitType + '</p>' +
+              '</div>'
+              );
+          }
+        }
       }
     }
   });
