@@ -70,7 +70,16 @@ $(function() {
     // } else {
     //   alert("You have to login in order to play");
     // }
-    alert("You have to login in order to play");
+    if(localStorage.getItem('username')){
+          $login.hide();
+          $register.hide();
+          $game.show();
+          $homepage.hide();
+          $('#title').text("Pokerbalmz Game");
+
+      } else {
+        alert("You have to login in order to play");
+      }
   });
 
   $('#login-button').click(function(e) {
@@ -122,9 +131,6 @@ $('#start').click(function() {
     $("#stake").val(20);
   });
 
-
-
-
 });
 
 function loginRequest(username, password) {
@@ -153,14 +159,14 @@ function loginRequest(username, password) {
 
         $('#title').text("Pokerbalmz Home");
 
-        $('#gamepage').click(function() {
-        console.log("pressed view");
-        $login.hide();
-        $register.hide();
-        $game.show();
-        $homepage.hide();
-        $('#title').text("Pokerbalmz Game");
-      });
+      //   $('#gamepage').click(function() {
+      //   console.log("pressed view");
+      //   $login.hide();
+      //   $register.hide();
+      //   $game.show();
+      //   $homepage.hide();
+      //   $('#title').text("Pokerbalmz Game");
+      // });
 
       },
       400: function(response) {
@@ -267,6 +273,10 @@ function startGame() {
             '</div>'
           );
         }
+
+
+
+
       }
     }
   });
@@ -288,6 +298,30 @@ function userInput(bet, call, check, fold) {
     async: false,
     statusCode: {
       200: function(response) {
+        console.log(response);
+        var position = '#top-middle';
+        for (var i = 0; i < response.length; i++) {
+          //change posiitons based on whos cards are what
+          //player card 1
+          var cardColor = getCardColour(response[i].suit)
+          var suitType = getSuitType(response[i].suit);
+          var cardValue = getCardValue(response[i].value);
+          if(i == 0){
+            $(position).html('<div class="card" id="' + cardColor + '">' +
+              '<p class = "suit">' + suitType + '</p>' +
+              '<p class="cardtype"> ' + cardValue + '</p>' +
+              '<p class="upsidedown suit">' + suitType + '</p>' +
+              '</div>'
+              );
+          }else{
+            $(position).append('<div class="card" id="' + cardColor + '">' +
+              '<p class = "suit">' + suitType + '</p>' +
+              '<p class="cardtype"> ' + cardValue + '</p>' +
+              '<p class="upsidedown suit">' + suitType + '</p>' +
+              '</div>'
+              );
+          }
+        }
       }
     }
   });
@@ -305,9 +339,7 @@ function registerRequest(username, password) {
     async: false,
     statusCode: {
       201: function(response) {
-        //  alert('Success');
         $('#register-msg').append('<p>You have successfully registered. Now you can login</p>');
-
 
         $login.show();
         $register.hide();
