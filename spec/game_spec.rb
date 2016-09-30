@@ -1,8 +1,9 @@
-describe "Poker game front end" do
+describe "Poker game - the game" do
 
   before:all do
     @driver = Selenium::WebDriver.for :chrome
     @url = "localhost:3002"
+    @deck_url = "http://localhost:3000/api/games"
     @username = "testz"
     @password = "password"
     @stake = "1000"

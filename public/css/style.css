@@ -15,6 +15,7 @@ section {
 
 h1 {
     font-size: 30px;
+    margin-bottom: 1em;
 }
 
 .home-content {
@@ -94,6 +95,13 @@ h1 {
     margin-left: 10px;
 }
 
+#homepageimage{
+  margin-top: -5em;
+  width: 600px;
+  height: 400px;
+  float: right;
+}
+
 #login-button {
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
@@ -141,7 +149,7 @@ h1 {
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     outline: 0;
-    background: #4CAF50;
+    background: grey;
     width: 100%;
     border: 0;
     padding: 15px;
