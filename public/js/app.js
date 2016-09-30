@@ -135,7 +135,7 @@ $('#start').click(function() {
 
 function loginRequest(username, password) {
   $.ajax({
-    url: "http://localhost:3000/api/users/login",
+    url: API_URL + "/api/users/login",
     type: 'POST',
     dataType: 'json',
     data: {
@@ -230,7 +230,7 @@ function getSuitType(suit) {
 function startGame() {
   var userID = localStorage.getItem('user');
   $.ajax({
-    url: "http://localhost:3000/api/games/new",
+    url: API_URL + "/api/games/new",
     type: 'POST',
     async: false,
     data: { user : userID},
@@ -281,7 +281,7 @@ function startGame() {
 
 function userInput(bet, call, check, fold) {
   $.ajax({
-    url: "http://localhost:3000/api/games",
+    url: API_URL + "/api/games",
     type: 'POST',
     dataType: 'json',
     data: {
@@ -296,12 +296,13 @@ function userInput(bet, call, check, fold) {
       200: function(response) {
         console.log(response);
         var position = '#top-middle';
-        for (var i = 0; i < response.length; i++) {
+        for (var i = 0; i < response.cards.length; i++) {
           //change posiitons based on whos cards are what
           //player card 1
-          var cardColor = getCardColour(response[i].suit)
-          var suitType = getSuitType(response[i].suit);
-          var cardValue = getCardValue(response[i].value);
+          var cardColor = getCardColour(response.cards[i].suit)
+          var suitType = getSuitType(response.cards[i].suit);
+          var cardValue = getCardValue(response.cards[i].value);
+          console.log(cardColor, suitType, cardValue)
           if(i == 0){
             $(position).html('<div class="card" id="' + cardColor + '">' +
               '<p class = "suit">' + suitType + '</p>' +
@@ -325,7 +326,7 @@ function userInput(bet, call, check, fold) {
 
 function registerRequest(username, password) {
   $.ajax({
-    url: "http://localhost:3000/api/users",
+    url: API_URL + "api/users",
     type: 'POST',
     dataType: 'json',
     data: {
