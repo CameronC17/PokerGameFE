@@ -2,7 +2,8 @@ describe "Poker game - the accounts" do
 
   before:all do
     @driver = Selenium::WebDriver.for :chrome
-    @url = "localhost:3002"
+    @fe_base_ip = ENV['POKER_GAME_FRONTEND_BASE_IP'] || "localhost:3001"
+    @url = "http://#{@fe_base_ip}"
     @username = "testz"
     @password = "password"
     @stake = "1000"
@@ -61,7 +62,7 @@ describe "Poker game - the accounts" do
     @driver.find_element(id: "password").send_keys @invalid_password
     @driver.find_element(id: "login-button").click
     expect(@driver.title).to include "Login"
-    expect(@driver.find_element(class: "error-msg").attribute("innerHTML")).to include "A user does not exist with the given details"
+    expect(@driver.find_element(id: "login-msg").attribute("innerHTML")).to include "A user does not exist with the given details"
   end
 
   it 'should allow the user to logout' do
