@@ -1,8 +1,9 @@
-describe "Poker game front end" do
+describe "Poker game - the game" do
 
   before:all do
     @driver = Selenium::WebDriver.for :chrome
     @url = "localhost:3002"
+    @deck_url = "http://localhost:3000/api/games"
     @username = "testz"
     @password = "password"
     @stake = "1000"
@@ -13,13 +14,10 @@ describe "Poker game front end" do
   end
 
   it 'should allow the user to select different stakes for single player and multiplayer games' do
-
     gametype = ["single", "multiplayer"]
     2.times do |i|
       login
       @driver.find_element(id: "gamepage").click
-      # This next line will need taking out once the pop ups stop appearing
-      @driver.switch_to.alert.accept
       @driver.find_element(id: gametype[i]).click
       @driver.find_element(id: "option1").click
       expect(@driver.find_element(id: "stake").attribute("value")).to include "100"
@@ -40,8 +38,6 @@ describe "Poker game front end" do
     2.times do |game|
       login
       @driver.find_element(id: "gamepage").click
-      # This next line will need taking out once the pop ups stop appearing
-      @driver.switch_to.alert.accept
       @driver.find_element(id: gametype[game]).click
       @driver.find_element(id: "start").click
       5.times do |player|
