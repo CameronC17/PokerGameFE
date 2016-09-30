@@ -333,11 +333,56 @@ function userInput(bet, call, check, fold) {
           window.alert("PLAYER " + response.winner + " (probably) WINS!! :D");
         }
 
-        //draws chips on the table
         console.log(response.chips);
+        //draws chips on the table
+        if(response.chips[0] != null || response.chips[1] != null || response.chips[2] != null || response.chips[3] != null || response.chips[4] != null) {
+          clearChips();
+          if (response.chips[0] != null) {
+            $("#top-left").append('<div class="edds" id="chips1">' +
+              '<p id="eddValue">' + response.chips[0] + '</p>' +
+              '</div>'
+            );
+          }
+
+          if (response.chips[1] != null) {
+            $("#bottom-left").append('<div class="edds" id="chips2">' +
+              '<p id="eddValue">' + response.chips[1] + '</p>' +
+              '</div>'
+            );
+          }
+
+          if (response.chips[2] != null) {
+            $("#bottom-middle").append('<div class="edds" id="chips3">' +
+              '<p id="eddValue">' + response.chips[2] + '</p>' +
+              '</div>'
+            );
+          }
+
+          if (response.chips[3] != null) {
+            $("#bottom-right").append('<div class="edds" id="chips4">' +
+              '<p id="eddValue">' + response.chips[3] + '</p>' +
+              '</div>'
+            );
+          }
+
+          if (response.chips[4] != null) {
+            $("#top-right").append('<div class="edds" id="chips5">' +
+              '<p id="eddValue">' + response.chips[4] + '</p>' +
+              '</div>'
+            );
+          }
+        }
       }
     }
   });
+}
+
+function clearChips() {
+  $("#chips1").remove();
+  $("#chips2").remove();
+  $("#chips3").remove();
+  $("#chips4").remove();
+  $("#chips5").remove();
 }
 
 function resetSeatColours() {
