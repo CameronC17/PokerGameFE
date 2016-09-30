@@ -69,7 +69,7 @@ $(function() {
     //
     // } else {}
       alert("You have to login in order to play");
-    
+
   });
 
   $('#login-button').click(function(e) {
@@ -226,6 +226,7 @@ function startGame() {
     data: { user : userID},
     statusCode: {
       200: function(response) {
+        console.log(response);
         var position = '#top-left';
         for (var i = 0; i < response.length; i++) {
           //change posiitons based on whos cards are what
@@ -289,6 +290,7 @@ function userInput(bet, call, check, fold) {
         for (var i = 0; i < response.cards.length; i++) {
           //change posiitons based on whos cards are what
           //player card 1
+
           var cardColor = getCardColour(response.cards[i].suit)
           var suitType = getSuitType(response.cards[i].suit);
           var cardValue = getCardValue(response.cards[i].value);
