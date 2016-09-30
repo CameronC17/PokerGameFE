@@ -318,7 +318,7 @@ function userInput(bet, call, check, fold) {
 
 function registerRequest(username, password) {
   $.ajax({
-    url: API_URL + "api/users",
+    url: API_URL + "/api/users",
     type: 'POST',
     dataType: 'json',
     data: {
