@@ -119,7 +119,7 @@ $('#start').click(function() {
 
 function loginRequest(username, password) {
   $.ajax({
-  //  url: API_URL + "/api/users/login",
+    //url: API_URL + "/api/users/login",
     url: "http://localhost:3000/api/users/login",
     type: 'POST',
     dataType: 'json',
