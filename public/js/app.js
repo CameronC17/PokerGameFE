@@ -226,6 +226,7 @@ function startGame() {
     data: { user : userID},
     statusCode: {
       200: function(response) {
+        console.log(response);
         var position = '#top-left';
         for (var i = 0; i < response.length; i++) {
           //change posiitons based on whos cards are what
@@ -242,9 +243,9 @@ function startGame() {
             position = "#top-right";
           }
           //player card 1
-          var cardColor = getCardColour(response[i][0].cards.suit)
-          var suitType = getSuitType(response[i][0].cards.suit);
-          var cardValue = getCardValue(response[i][0].cards.value);
+          var cardColor = getCardColour(response[i][0].suit)
+          var suitType = getSuitType(response[i][0].suit);
+          var cardValue = getCardValue(response[i][0].value);
           $(position).html('<div class="card" id="' + cardColor + '">' +
             '<p class = "suit">' + suitType + '</p>' +
             '<p class="cardtype"> ' + cardValue + '</p>' +
@@ -253,9 +254,9 @@ function startGame() {
           );
 
           //player card 2
-          cardColor = getCardColour(response[i][1].cards[i].suit)
-          suitType = getSuitType(response[i][1].cards[i].suit);
-          cardValue = getCardValue(response[i][1].cards[i].value);
+          cardColor = getCardColour(response[i][1].suit)
+          suitType = getSuitType(response[i][1].suit);
+          cardValue = getCardValue(response[i][1].value);
           $(position).append('<div class="card" id="' + cardColor + '">' +
             '<p class = "suit">' + suitType + '</p>' +
             '<p class="cardtype"> ' + cardValue + '</p>' +
@@ -289,6 +290,7 @@ function userInput(bet, call, check, fold) {
         for (var i = 0; i < response.cards.length; i++) {
           //change posiitons based on whos cards are what
           //player card 1
+
           var cardColor = getCardColour(response.cards[i].suit)
           var suitType = getSuitType(response.cards[i].suit);
           var cardValue = getCardValue(response.cards[i].value);
