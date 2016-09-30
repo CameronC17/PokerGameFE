@@ -16,21 +16,18 @@ $(function() {
   $game.hide();
 
   $('#single').click(function() {
-    console.log("pressed view");
     $gamebuttons.show();
     $singleplayer.hide();
     $multiplayer.hide();
   });
 
   $('#multiplayer').click(function() {
-    console.log("pressed view");
     $gamebuttons.show();
     $singleplayer.hide();
     $multiplayer.hide();
   });
 
   $('#loginpage').click(function() {
-    console.log("pressed view");
     $login.show();
     $register.hide();
     $game.hide();
@@ -39,7 +36,6 @@ $(function() {
   });
 
   $('#homepage').click(function() {
-    console.log("pressed view");
     $login.hide();
     $register.hide();
     $game.hide();
@@ -48,7 +44,6 @@ $(function() {
   });
 
   $('#registerpage').click(function() {
-    console.log("pressed view");
     $login.hide();
     $register.show();
     $game.hide();
@@ -69,7 +64,7 @@ $(function() {
     //
     // } else {}
       alert("You have to login in order to play");
-    
+
   });
 
   $('#login-button').click(function(e) {
@@ -107,7 +102,6 @@ $('#call').click(function() {
   userInput(false, true, false, false);
 })
 $('#start').click(function() {
-  console.log('start');
   startGame();
 })
 
@@ -125,7 +119,8 @@ $('#start').click(function() {
 
 function loginRequest(username, password) {
   $.ajax({
-    url: API_URL + "/api/users/login",
+  //  url: API_URL + "/api/users/login",
+    url: "http://localhost:3000/api/users/login",
     type: 'POST',
     dataType: 'json',
     data: {
@@ -150,7 +145,6 @@ function loginRequest(username, password) {
         $('#title').text("Pokerbalmz Home");
 
         $('#gamepage').click(function() {
-        console.log("pressed view");
         $login.hide();
         $register.hide();
         $game.show();
@@ -220,7 +214,8 @@ function getSuitType(suit) {
 function startGame() {
   var userID = localStorage.getItem('user');
   $.ajax({
-    url: API_URL + "/api/games/new",
+    url: "http://localhost:3000/api/games/new",
+    //url: API_URL + "/api/games/new",
     type: 'POST',
     async: false,
     data: { user : userID},
@@ -271,7 +266,8 @@ function startGame() {
 
 function userInput(bet, call, check, fold) {
   $.ajax({
-    url: API_URL + "/api/games",
+    //url: API_URL + "/api/games",
+    url: "http://localhost:3000/api/games",
     type: 'POST',
     dataType: 'json',
     data: {
@@ -284,7 +280,6 @@ function userInput(bet, call, check, fold) {
     async: false,
     statusCode: {
       200: function(response) {
-        console.log(response);
         var position = '#top-middle';
         for (var i = 0; i < response.cards.length; i++) {
           //change posiitons based on whos cards are what
@@ -292,7 +287,6 @@ function userInput(bet, call, check, fold) {
           var cardColor = getCardColour(response.cards[i].suit)
           var suitType = getSuitType(response.cards[i].suit);
           var cardValue = getCardValue(response.cards[i].value);
-          console.log(cardColor, suitType, cardValue)
           if(i == 0){
             $(position).html('<div class="card" id="' + cardColor + '">' +
               '<p class = "suit">' + suitType + '</p>' +
@@ -309,14 +303,55 @@ function userInput(bet, call, check, fold) {
               );
           }
         }
+        //change seat colours
+        switch (response.turn) {
+          case 0:
+            resetSeatColours();
+            $(seat1).css("background-color", "#73CB03");
+            break;
+          case 1:
+            resetSeatColours();
+            $(seat2).css("background-color", "#73CB03");
+            break;
+          case 2:
+            resetSeatColours();
+            $(seat3).css("background-color", "#73CB03");
+            break;
+          case 3:
+            resetSeatColours();
+            $(seat4).css("background-color", "#73CB03");
+            break;
+          case 4:
+            resetSeatColours();
+            $(seat5).css("background-color", "#73CB03");
+            break;
+        }
+
+        //show winner
+        //console.log(response.winner);
+        if (response.winner != null) {
+          window.alert("PLAYER " + response.winner + " (probably) WINS!! :D");
+        }
+
+        //draws chips on the table
+        console.log(response.chips);
       }
     }
   });
 }
 
+function resetSeatColours() {
+  $(seat1).css("background-color", "#A40606");
+  $(seat2).css("background-color", "#A40606");
+  $(seat3).css("background-color", "#A40606");
+  $(seat4).css("background-color", "#A40606");
+  $(seat5).css("background-color", "#A40606");
+}
+
 function registerRequest(username, password) {
   $.ajax({
-    url: API_URL + "api/users",
+    //url: API_URL + "api/users",
+    url: "http://localhost:3000/api/users",
     type: 'POST',
     dataType: 'json',
     data: {
