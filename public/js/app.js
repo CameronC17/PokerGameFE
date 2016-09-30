@@ -69,7 +69,7 @@ $(function() {
     //
     // } else {}
       alert("You have to login in order to play");
-    
+
   });
 
   $('#login-button').click(function(e) {
@@ -242,9 +242,9 @@ function startGame() {
             position = "#top-right";
           }
           //player card 1
-          var cardColor = getCardColour(response[i][0].suit)
-          var suitType = getSuitType(response[i][0].suit);
-          var cardValue = getCardValue(response[i][0].value);
+          var cardColor = getCardColour(response[i][0].cards.suit)
+          var suitType = getSuitType(response[i][0].cards.suit);
+          var cardValue = getCardValue(response[i][0].cards.value);
           $(position).html('<div class="card" id="' + cardColor + '">' +
             '<p class = "suit">' + suitType + '</p>' +
             '<p class="cardtype"> ' + cardValue + '</p>' +
@@ -253,9 +253,9 @@ function startGame() {
           );
 
           //player card 2
-          cardColor = getCardColour(response[i][1].suit)
-          suitType = getSuitType(response[i][1].suit);
-          cardValue = getCardValue(response[i][1].value);
+          cardColor = getCardColour(response[i][1].cards[i].suit)
+          suitType = getSuitType(response[i][1].cards[i].suit);
+          cardValue = getCardValue(response[i][1].cards[i].value);
           $(position).append('<div class="card" id="' + cardColor + '">' +
             '<p class = "suit">' + suitType + '</p>' +
             '<p class="cardtype"> ' + cardValue + '</p>' +
