@@ -1,4 +1,4 @@
-describe "Poker game front end" do
+describe "Poker game - the accounts" do
 
   before:all do
     @driver = Selenium::WebDriver.for :chrome
