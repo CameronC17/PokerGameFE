@@ -351,6 +351,7 @@ function userInput(bet, call, check, fold) {
               '<p id="eddValue">' + response.chips[1] + '</p>' +
               '</div>'
             );
+            $("#chips2").css('background-color', "blue");
           }
 
           if (response.chips[2] != null) {
@@ -358,6 +359,7 @@ function userInput(bet, call, check, fold) {
               '<p id="eddValue">' + response.chips[2] + '</p>' +
               '</div>'
             );
+            $("#chips3").css('background-color', "red");
           }
 
           if (response.chips[3] != null) {
@@ -365,6 +367,7 @@ function userInput(bet, call, check, fold) {
               '<p id="eddValue">' + response.chips[3] + '</p>' +
               '</div>'
             );
+            $("#chips4").css('background-color', "black");
           }
 
           if (response.chips[4] != null) {
@@ -372,6 +375,7 @@ function userInput(bet, call, check, fold) {
               '<p id="eddValue">' + response.chips[4] + '</p>' +
               '</div>'
             );
+            $("#chips5").css('background-color', "purple");
           }
         }
       }
