@@ -1,5 +1,5 @@
 $(function() {
-
+  console.log(API_URL);
 
   $homepage = $('#homepage-section')
   $login = $('#login-section')
